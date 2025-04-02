@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2025 at 05:35 PM
+-- Generation Time: Apr 02, 2025 at 08:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,7 +60,7 @@ CREATE TABLE `approved_loan` (
   `A_Id` int(11) NOT NULL,
   `Loan_id` int(11) DEFAULT NULL,
   `Paid_amount` decimal(10,2) NOT NULL,
-  `Receipt` varchar(255) DEFAULT NULL,
+  `Receipt` blob DEFAULT NULL,
   `Approved_date` date NOT NULL,
   `Status` enum('Active','Closed') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -78,7 +78,7 @@ CREATE TABLE `client` (
   `Email` varchar(255) NOT NULL,
   `Username` varchar(50) NOT NULL,
   `Password` varchar(255) NOT NULL,
-  `ID_photo` varchar(255) DEFAULT NULL,
+  `ID_photo` blob DEFAULT NULL,
   `Created_By` varchar(15) DEFAULT NULL,
   `Registration_status` enum('Pending','Approved','Rejected') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -177,7 +177,7 @@ CREATE TABLE `payment` (
 CREATE TABLE `payment_slips` (
   `Payment_id` int(11) DEFAULT NULL,
   `slip_id` int(11) NOT NULL,
-  `Slip` varchar(255) NOT NULL
+  `Slip` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
