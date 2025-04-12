@@ -1,5 +1,5 @@
-MIRO-: https://miro.com/app/board/uXjVLmXyrqU=/?passwordless_invite=
+MIRO-: https://miro.com/app/board/uXjVLmXyrqU=/
 
-JIRA-:
+JIRA-: https://univ-team-algowizard.atlassian.net/jira/software/projects/AL/boards/1
 
 FIGMA-: https://www.figma.com/design/a2kJqAmoZSWGZG6OgFEKKQ/PaySync?node-id=0-1&p=f&t=6sfodRDOxf8uaKmB-0
