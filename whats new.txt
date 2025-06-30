@@ -59,3 +59,17 @@ PORT=5000
 * Accessed `http://localhost:5000/add-user` → inserted a document
 * Confirmed inserted data in MongoDB Compass (`test > users`)
 
+
+==========================================================================================================================
+2025/06/30
+nodemon for if changes automatically restart
+npm install -g nodemon
+
+
+npm install --save-dev nodemon
+"scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js"
+}
+npm run dev
+

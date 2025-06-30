@@ -20,7 +20,7 @@ const clientSchema = new mongoose.Schema({
     contactNumber: String,
     email: String,
     dateOfBirth: Date,
-    address: String, // e.g., "12/1, Kokuvil, Jaffna"
+    address: String, 
   },
 
   identityVerification: {

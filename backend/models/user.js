@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
     enum: ['moderate_admin', 'ceo', 'regional_manager', 'agent'],
     required: true,
   },
+  region: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Region'  // <-- reference to Region collection
+  },
 
   permissions: [String], // optional: like ['create-user', 'view-client']
 
