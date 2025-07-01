@@ -7,6 +7,8 @@ const Staff = require("./models/Staff");
 const Region = require('./models/Region');
 const Client = require('./models/Client');
 const ClientUser = require('./models/clientUsers');
+const StaffDetails = require('./models/StaffDetails'); // make sure this line is near your other model imports
+
 const bcrypt = require("bcrypt");
 
 dotenv.config();
@@ -241,6 +243,89 @@ app.get('/approve-client1', async (req, res) => {
     res.status(500).json({ error: "Failed to create client user" });
   }
 });
+//staffdetails
+app.get('/staffDetails1', async (req, res) => {
+  try {
+    const newStaffDetails = await StaffDetails.create({
+      staffId: "68624102b94efae0bbc53c7b",
+      profilePicUrl: "https://example.com/fazil-pic.jpg",
+      dateOfBirth: new Date("1998-02-15"),
+      contactNumber: "0771234567",
+      address: "123, Main Street, Jaffna",
+      nicNumber: "982345678V",
+      emergencyContact: {
+        name: "Ahamed",
+        phone: "0779876543",
+        relation: "Brother"
+      },
+      joinedDate: new Date("2023-01-01"),
+      additionalNotes: "Senior agent in Northern region"
+    });
+
+    res.status(201).json({
+      message: "✅ Staff details created successfully",
+      data: newStaffDetails
+    });
+  } catch (error) {
+    console.error("❌ Error creating staff details:", error);
+    res.status(500).json({ error: "Failed to create staff details" });
+  }
+});
+app.get('/staffDetails2', async (req, res) => {
+  try {
+    const newStaffDetails = await StaffDetails.create({
+      staffId: "68623db468be936c3cb65970",
+      profilePicUrl: "https://example.com/john-smith.jpg",
+      dateOfBirth: new Date("1990-08-25"),
+      contactNumber: "0711112233",
+      address: "456, Station Road, Vavuniya",
+      nicNumber: "902345678V",
+      emergencyContact: {
+        name: "Alex Smith",
+        phone: "0771122334",
+        relation: "Brother"
+      },
+      joinedDate: new Date("2022-09-10"),
+      additionalNotes: "Field agent for Northern region"
+    });
+
+    res.status(201).json({
+      message: "✅ Staff details for John Smith created successfully",
+      data: newStaffDetails
+    });
+  } catch (error) {
+    console.error("❌ Error creating staff details for John Smith:", error);
+    res.status(500).json({ error: "Failed to create staff details" });
+  }
+});
+app.get('/staffDetails3', async (req, res) => {
+  try {
+    const newStaffDetails = await StaffDetails.create({
+      staffId: "68623f2d47b74792ebb44c67",
+      profilePicUrl: "https://example.com/dilshan-perera.jpg",
+      dateOfBirth: new Date("1985-06-12"),
+      contactNumber: "0723456789",
+      address: "789, Lake Road, Anuradhapura",
+      nicNumber: "852345678V",
+      emergencyContact: {
+        name: "Nimesha Perera",
+        phone: "0759876543",
+        relation: "Wife"
+      },
+      joinedDate: new Date("2021-03-15"),
+      additionalNotes: "Manages Northern regional staff"
+    });
+
+    res.status(201).json({
+      message: "✅ Staff details for Dilshan Perera created successfully",
+      data: newStaffDetails
+    });
+  } catch (error) {
+    console.error("❌ Error creating staff details for Dilshan Perera:", error);
+    res.status(500).json({ error: "Failed to create staff details" });
+  }
+});
+
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("✅ Server running");
