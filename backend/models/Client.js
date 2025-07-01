@@ -7,7 +7,7 @@ const clientSchema = new mongoose.Schema({
   submissionDate: { type: Date, default: Date.now },
   lastUpdated: Date,
 
-  assignedReviewer: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // agent _id
+  assignedReviewer: { type: mongoose.Schema.Types.ObjectId, ref: 'Staff' }, // agent _id
 
   status: {
     type: String,
@@ -21,6 +21,22 @@ const clientSchema = new mongoose.Schema({
     email: String,
     dateOfBirth: Date,
     address: String, 
+    district: {
+      type: String,
+      enum: [
+        'Colombo', 'Gampaha', 'Kalutara',
+        'Kandy', 'Matale', 'Nuwara Eliya',
+        'Galle', 'Matara', 'Hambantota',
+        'Jaffna', 'Kilinochchi', 'Mannar',
+        'Vavuniya', 'Mullaitivu',
+        'Batticaloa', 'Ampara', 'Trincomalee',
+        'Kurunegala', 'Puttalam',
+        'Anuradhapura', 'Polonnaruwa',
+        'Badulla', 'Monaragala',
+        'Ratnapura', 'Kegalle'
+      ],
+      required: true
+    },
   },
 
   identityVerification: {

@@ -33,7 +33,7 @@ const clientUserSchema = new mongoose.Schema({
   },
   verifiedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // could be agent or manager
+    ref: 'Staff', // could be agent or manager
     required: true
   },
   lastLogin: {

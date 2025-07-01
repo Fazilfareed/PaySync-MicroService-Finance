@@ -3,7 +3,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
-const User = require("./models/User");
+const Staff = require("./models/Staff");
 const Region = require('./models/Region');
 const Client = require('./models/Client');
 const ClientUser = require('./models/clientUsers');
@@ -18,7 +18,7 @@ app.use(express.json());
 app.get("/add-admin", async (req, res) => {
   try {
     const passwordHash = await bcrypt.hash("Fazil@123", 10);
-    const user = await User.create({
+    const staff = await Staff.create({
       name: "Fazil Fareed",
       email: "Fazil12@example.com",
       passwordHash,
@@ -26,7 +26,7 @@ app.get("/add-admin", async (req, res) => {
       region: "Central Region",
       permissions: ["create-staff", "approve-permissions", "view-staff", "manage-staff", "view-reports"],
     });
-    res.json(user);
+    res.json(staff);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

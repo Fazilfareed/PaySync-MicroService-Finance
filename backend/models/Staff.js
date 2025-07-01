@@ -1,8 +1,8 @@
-// models/User.js
+// models/Staff.js
 
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const staffSchema = new mongoose.Schema({
   name: { type: String, required: true },
 
   email: { type: String, required: true, unique: true },
@@ -22,9 +22,9 @@ const userSchema = new mongoose.Schema({
 
   area: String, // optional: for agents or regional managers (e.g., "Jaffna")
 
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // if created by another admin
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'Staff' }, // if created by another admin
 
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Staff", userSchema);
