@@ -10,12 +10,23 @@ const ClientUser = require('./models/clientUsers');
 const StaffDetails = require('./models/StaffDetails'); // make sure this line is near your other model imports
 
 const bcrypt = require("bcrypt");
+const clientRoutes = require('./routes/clientRoutes');
+
+
 
 dotenv.config();
+const PORT = process.env.PORT || 5000;
 connectDB();
 
 const app = express();
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the Loan Management System API');
+});
+
+app.use('/api/clients', clientRoutes);
+
 //add staff
 app.get("/add-admin", async (req, res) => {
   try {
@@ -33,7 +44,7 @@ app.get("/add-admin", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-// Add clients
+// // Add clients
 app.get('/add-client1', async (req, res) => {
   try {
     const newClient = new Client({
@@ -159,7 +170,7 @@ app.get('/add-client3', async (req, res) => {
   }
 });
 
-// Add regions
+// // Add regions
 app.get('/add-region', async (req, res) => {
   try {
     const regionData = [
@@ -208,7 +219,7 @@ app.get('/add-region', async (req, res) => {
   }
 });
 
-//accepted client
+// //accepted client
 app.get('/approve-client1', async (req, res) => {
   try {
     const client = await Client.findOne({ registrationId: "L00003" });
@@ -327,6 +338,6 @@ app.get('/staffDetails3', async (req, res) => {
 });
 
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log("✅ Server running");
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on http://localhost:${PORT}`);
 });
